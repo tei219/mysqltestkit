@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+        master:
+                container_name: master
+                image: mysql:5.6
+                tty: true
+                env_file: ./master/env
+                volumes: 
+                 - ./master/initdb.d:/docker-entrypoint-initdb.d:ro
+                 - ./master/conf.d:/etc/mysql/mysql.conf.d:ro
+                command:
+                  --server_id=1
+                  --log-bin=mysql-bin
+                healthcheck:
+                        test: ["CMD-SHELL","mysql -uroot -ptest -sNe \"select 1;\""]
+                        start_period: 5s
+                        retries: 20
+                        interval: 1s
+                        timeout: 1s
+
+        slave:
+                image: mysql:5.6
+                tty: true
+                env_file: ./slave/env
+                volumes: 
+                 - ./slave/initdb.d:/docker-entrypoint-initdb.d:ro
+                 - ./slave/conf.d:/etc/mysql/mysql.conf.d:ro
+                 - ./slave/slave-init.sh:/slave-init.sh
+                depends_on: 
+                  master:
+                    condition: service_healthy
+                entrypoint: /slave-init.sh
+                
+        mysql: 
+                container_name: client
+                build: 
+                        context: ./mysql-client/
+                tty: true
+                profiles: 
+                  - extra
+
