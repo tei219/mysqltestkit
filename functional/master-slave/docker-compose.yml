@@ -15,7 +15,7 @@ services:
                   --server_id=1
                   --log-bin=mysql-bin
                 healthcheck:
-                        test: ["CMD-SHELL","mysql -uroot -ptest -sNe \"select 1;\""]
+                        test: ["CMD-SHELL","mysql -uroot -sNe \"select 1;\""]
                         start_period: 5s
                         retries: 20
                         interval: 1s
