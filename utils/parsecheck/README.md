@@ -11,7 +11,7 @@ $ docker-compose up -d
 
 parsechek でクエリを投げて確認
 ```sh
-$ docker-compose run mysql -u root -p -h コンテナ名
+$ docker-compose run parsecheck "クエリ"
 ```
 MySQL 8 は STATEMENT_DIGEST_TEXT, その他は explain で構文チェックするよ
 
