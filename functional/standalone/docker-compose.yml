@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+        mysql80:
+                container_name: mysql80
+                image: mysql:8
+                tty: true
+                volumes:
+                  - ./conf.d/mysql80.cnf:/etc/mysql/mysql.conf.d/mysql80.cnf:ro
+                environment:
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+                command: --default-authentication-plugin=mysql_native_password
+        mysql57:
+                container_name: mysql57
+                image: mysql:5.7
+                tty: true
+                volumes:
+                  - ./conf.d/mysql57.cnf:/etc/mysql/mysql.conf.d/mysql57.cnf:ro
+                environment:
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+                command: --default-authentication-plugin=mysql_native_password
+                profiles: 
+                  - extra
+        mysql56:
+                container_name: mysql56
+                image: mysql:5.6
+                tty: true
+                volumes:
+                  - ./conf.d/mysql56.cnf:/etc/mysql/mysql.conf.d/mysql56.cnf:ro
+                environment:
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+                command: --default-authentication-plugin=mysql_native_password
+                profiles: 
+                  - extra
+        mysql55:
+                container_name: mysql55
+                image: mysql:5.5
+                tty: true
+                volumes:
+                  - ./conf.d/mysql55.cnf:/etc/mysql/mysql.conf.d/mysql55.cnf:ro
+                environment:
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+                profiles: 
+                  - extra
+        mysql51:
+                container_name: mysql51
+                image: mtirsel/mysql-5.1
+                tty: true
+                volumes:
+                  - ./conf.d/mysql51-my.cnf:/etc/mysql/my.cnf:ro
+                  - ./conf.d/mysql51.cnf:/etc/mysql/mysql.conf.d/mysql51.cnf:ro
+                environment:
+                  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+                profiles: 
+                  - extra
+        mysql: 
+                container_name: client
+                build: 
+                        context: ./mysql-client/
+                tty: true
+                profiles: 
+                  - extra
