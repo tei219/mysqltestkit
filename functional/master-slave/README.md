@@ -22,13 +22,16 @@ Starting master-slave_slave_1 ... done
 Creating master-slave_slave_2 ... done
 Creating master-slave_slave_3 ... done
 
-$ docker-compose run mysql -h master-slave_slave_3 -e "select @@hostname;"
+$ for i in 1 2 3; do docker-compose run mysql -u root -h master-slave_slave_$i -se "show slave status\G" | grep Yes; done
 Creating master-slave_mysql_run ... done
-+--------------+
-| @@hostname   |
-+--------------+
-| a0c093a40a9b |
-+--------------+
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
+Creating master-slave_mysql_run ... done
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
+Creating master-slave_mysql_run ... done
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
 ```
 
 # 既知のバグ
