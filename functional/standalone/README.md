@@ -16,6 +16,8 @@ $ docker-compose run mysql -u root -p -h コンテナ名
 
 # 実行例
 ```sh
+$ docker-compose up -d mysql51
+Creating mysql51 ... done
 $ docker-compose run mysql -u root -h mysql51 -sNe "show global variables like '%version%'" mysql
 Creating standalone_mysql_run ... done
 protocol_version        10
