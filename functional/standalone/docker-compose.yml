@@ -53,6 +53,29 @@ services:
                   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
                 profiles: 
                   - extra
+        mssql2019:
+                container_name: mssql2019
+                image: mcr.microsoft.com/mssql/server:2019-latest
+                tty: true
+                environment:
+                  - ACCEPT_EULA=Y
+                  - SA_PASSWORD=P@ssw0rd
+        mssql2017:
+                container_name: mssql2017
+                image: mcr.microsoft.com/mssql/server:2017-latest
+                tty: true
+                environment:
+                  - ACCEPT_EULA=Y
+                  - SA_PASSWORD=P@ssw0rd
+                profiles: 
+                  - extra
+        sqlcmd: 
+                container_name: client
+                build: 
+                        context: ./mssql-client/
+                tty: true
+                profiles: 
+                  - extra
         mysql: 
                 container_name: client
                 build: 
