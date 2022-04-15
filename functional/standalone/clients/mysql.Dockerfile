@@ -1,5 +1,1 @@
-FROM alpine
-
-RUN apk add mysql-client
-
-ENTRYPOINT ["/usr/bin/mysql"]
+../../../utils/client-mysql/Dockerfile
