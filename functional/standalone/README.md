@@ -12,8 +12,8 @@ $ docker-compose up -d mysql56
 各インスタンスにログインする時は同梱の 各々の client  から繋いでね
 ```sh
 $ docker-compose run --rm mysql -u root -p -h コンテナ名
-$ docker-compose run --rm sqlcmd -U sa -P すごい強力なぱすわーど -S コンテナ名
-$ docker-compose run --rm psql -U postgres -P すごい強力なぱすわーど -h コンテナ名
+$ docker-compose run --rm sqlcmd -U sa -S コンテナ名
+$ docker-compose run --rm psql -U postgres -h コンテナ名
 ```
 
 # 実行例
@@ -45,7 +45,7 @@ Microsoft SQL Server 2017 (RTM-CU29) (KB5010786) - 14.0.3436.1 (X64)
 --
 $ docker-compose up -d postgres10
 Starting postgres10 ... done
-$ docker-compose run --rm psql -h postgres10 -U postgres -c "select version();"
+$ docker-compose run --rm -e "PGPASSWORD=P@ssw0rd" psql -h postgres10 -U postgres -w -c "select version();"
 Creating standalone_psql_run ... done
 Password for user postgres: 
                                                               version                                                               
