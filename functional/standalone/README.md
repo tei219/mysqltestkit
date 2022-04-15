@@ -13,6 +13,7 @@ $ docker-compose up -d mysql56
 ```sh
 $ docker-compose run --rm mysql -u root -p -h コンテナ名
 $ docker-compose run --rm sqlcmd -U sa -P すごい強力なぱすわーど -S コンテナ名
+$ docker-compose run --rm psql -U postgres -P すごい強力なぱすわーど -h コンテナ名
 ```
 
 # 実行例
@@ -28,7 +29,8 @@ version_compile_machine x86_64
 version_compile_os      unknown-linux-gnu
 
 --
-
+$ docker-compose up -d mssql2017
+Creating mssql2017 ... done
 $ docker-compose run --rm sqlcmd -S mssql2017 -U sa -P P@ssw0rd -Q "select @@version" -W
 Creating standalone_sqlcmd_run ... done
  
@@ -39,6 +41,17 @@ Microsoft SQL Server 2017 (RTM-CU29) (KB5010786) - 14.0.3436.1 (X64)
         Developer Edition (64-bit) on Linux (Ubuntu 16.04.7 LTS)
 
 (1 rows affected)
+
+--
+$ docker-compose up -d postgres10
+Starting postgres10 ... done
+$ docker-compose run --rm psql -h postgres10 -U postgres -c "select version();"
+Creating standalone_psql_run ... done
+Password for user postgres: 
+                                                              version                                                               
+------------------------------------------------------------------------------------------------------------------------------------
+ PostgreSQL 10.20 (Debian 10.20-1.pgdg90+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 6.3.0-18+deb9u1) 6.3.0 20170516, 64-bit
+(1 row)
 ```
 
 # 既知のバグ
