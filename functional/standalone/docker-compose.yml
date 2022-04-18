@@ -9,7 +9,7 @@ services:
       - ./conf.d/mysql80.cnf:/etc/mysql/mysql.conf.d/mysql80.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password
 
   mysql57:
     container_name: mysql57
@@ -125,7 +125,7 @@ services:
   psql: 
     container_name: client
     build: 
-      context: ./clients/psql.Dockerfile
+      context: ../../utils/client-psql/
     tty: true
     profiles: 
       - extra
@@ -133,7 +133,7 @@ services:
   sqlcmd: 
     container_name: client
     build: 
-      context: ./clients/sqlcmd.Dockerfile
+      context: ../../utils/client-sqlcmd/
     tty: true
     profiles: 
       - extra
@@ -141,7 +141,7 @@ services:
   mysql: 
     container_name: client
     build: 
-      context: ./clients/mysql.Dockerfile
+      context: ../../utils/client-mysql/
     tty: true
     profiles: 
       - extra

@@ -1,1 +1,0 @@
-../../../utils/client-psql/Dockerfile
