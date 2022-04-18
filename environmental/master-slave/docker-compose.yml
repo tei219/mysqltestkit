@@ -39,7 +39,7 @@ services:
         mysql: 
                 container_name: client
                 build: 
-                        context: ./mysql-client/
+                        context: ../../utils/client-mysql/
                 tty: true
                 profiles: 
                   - extra
