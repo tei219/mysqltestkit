@@ -11,7 +11,12 @@ echo "--------"
 echo "stmt: \"$stmt\""
 echo "--------"
 
-for instance in mysql80 mysql57 mysql56
+list=$(cat list)
+if [[ -z $list ]]; then
+    list="mysq80 mysql57"
+fi
+
+for instance in $list
 do
     if nslookup $instance >/dev/null ; then
         ver=$(mysql -h $instance -sNe "select @@version;")
