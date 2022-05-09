@@ -1,0 +1,102 @@
+version: "3"
+
+services:
+  client:
+    image: alpine
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu2204: 
+    build: 
+      context: .
+      dockerfile: ubuntu/2204.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu2004: 
+    build: 
+      context: .
+      dockerfile: ubuntu/2004.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu1804: 
+    build: 
+      context: .
+      dockerfile: ubuntu/1804.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu1604: 
+    build: 
+      context: .
+      dockerfile: ubuntu/1604.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu1404: 
+    build: 
+      context: .
+      dockerfile: ubuntu/1404.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  ubuntu1204: 
+    build: 
+      context: .
+      dockerfile: ubuntu/1204.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos6: 
+    build: 
+      context: .
+      dockerfile: centos/6.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos7: 
+    build: 
+      context: .
+      dockerfile: centos/7.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos8: 
+    build: 
+      context: .
+      dockerfile: centos/8.Dockerfile
+    privileged: true
+    volumes: 
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: true
+    profiles: 
+      - extra
+
+  centosstream: 
+    build: 
+      context: .
+      dockerfile: centos/stream.Dockerfile
+    privileged: true
+    volumes: 
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: true
+    profiles: 
+      - extra
