@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  ansible: 
+    build: 
+      context: .
+      dockerfile: ./ansible.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos6: 
+    build: 
+      context: .
+      dockerfile: ../utils/distro-sshd/centos/6.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos7: 
+    build: 
+      context: .
+      dockerfile: ../utils/distro-sshd/centos/7.Dockerfile
+    privileged: true
+    tty: true
+    profiles: 
+      - extra
+
+  centos8: 
+    build: 
+      context: .
+      dockerfile: ../utils/distro-sshd/centos/8.Dockerfile
+    privileged: true
+    volumes: 
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: true
+    profiles: 
+      - extra
+
+  centosstream: 
+    build: 
+      context: .
+      dockerfile: ../utils/distro-sshd/centos/stream.Dockerfile
+    privileged: true
+    volumes: 
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    tty: true
+    profiles: 
+      - extra
