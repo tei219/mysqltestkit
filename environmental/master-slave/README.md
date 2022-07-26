@@ -22,7 +22,7 @@ Starting master-slave_slave_1 ... done
 Creating master-slave_slave_2 ... done
 Creating master-slave_slave_3 ... done
 
-$ for i in 1 2 3; do docker-compose run mysql -u root -h master-slave_slave_$i -se "show slave status\G" | grep Yes; done
+$ for i in 1 2 3; do docker-compose run --rm mysql -u root -h master-slave_slave_$i -se "show slave status\G" | grep Yes; done
 Creating master-slave_mysql_run ... done
              Slave_IO_Running: Yes
             Slave_SQL_Running: Yes
