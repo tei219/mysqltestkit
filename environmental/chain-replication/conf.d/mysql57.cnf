@@ -1,0 +1,5 @@
+# MySQL 5.7 params
+[mysqld]
+server_id=57
+log-bin
+log-slave-updates
